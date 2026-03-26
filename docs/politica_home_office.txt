@@ -1,0 +1,65 @@
+POLÍTICA DE TRABAJO REMOTO (HOME OFFICE)
+Versión: 2.0 | Área: Recursos Humanos / TI | Vigencia: Marzo 2024
+
+1. OBJETO
+Regular las condiciones, derechos y obligaciones del trabajo remoto para garantizar productividad, seguridad de la información y bienestar del empleado.
+
+2. ALCANCE
+Aplica a todos los empleados cuyas funciones sean realizables de forma remota. No aplica a roles operativos que requieran presencia física obligatoria (producción, seguridad, recepción).
+
+3. MODALIDADES
+
+3.1 Home Office Permanente:
+- Requiere aprobación de RRHH y gerencia de área
+- Máximo 3 días remotos por semana
+- Se debe asistir presencialmente los días acordados con el jefe
+
+3.2 Home Office Eventual:
+- Hasta 2 días por semana sin aprobación previa formal
+- El empleado debe notificar al jefe directo el día anterior
+- No aplica durante períodos de alta demanda o cierre de mes
+
+3.3 Home Office de Emergencia:
+- Ante fuerza mayor (clima extremo, problemas de transporte, salud)
+- Se notifica el mismo día antes de las 9:00 AM
+- No descuenta de la cuota semanal de home office
+
+4. REQUISITOS TÉCNICOS
+
+4.1 El empleado debe contar con:
+- Conexión a internet de mínimo 20 Mbps de bajada / 5 Mbps de subida
+- Computador provisto por la empresa o con las especificaciones aprobadas por TI
+- Espacio de trabajo adecuado, iluminado y sin distracciones durante reuniones
+- Uso obligatorio de VPN corporativa para acceder a sistemas internos
+
+4.2 La empresa provee:
+- Laptop corporativa (si aplica según rol)
+- Licencias de software necesarias
+- Acceso VPN y soporte técnico remoto
+
+5. SEGURIDAD DE LA INFORMACIÓN
+- Queda estrictamente prohibido trabajar desde redes WiFi públicas sin VPN
+- No se puede imprimir ni descargar información confidencial en equipos o redes personales
+- Las videollamadas con clientes deben realizarse con fondo virtual o en espacio privado
+- Ante pérdida o robo del equipo, notificar a TI en menos de 2 horas: seguridad@empresa.com
+
+6. DISPONIBILIDAD Y HORARIO
+- El empleado debe mantener el mismo horario que en oficina
+- Debe estar disponible en Slack/Teams durante el horario laboral
+- El tiempo de respuesta máximo a mensajes urgentes es de 30 minutos
+- Las reuniones agendadas tienen prioridad y son de asistencia obligatoria
+
+7. EVALUACIÓN Y REVOCACIÓN
+- El jefe directo puede revocar el acceso a home office si se detecta:
+  - Incumplimiento reiterado de horarios
+  - Caídas de productividad medibles
+  - Incidentes de seguridad por descuido
+- La revocación se comunica formalmente con 5 días de anticipación
+
+8. SUBSIDIOS Y GASTOS
+- La empresa no cubre gastos de internet ni electricidad del hogar
+- Los empleados con home office permanente pueden solicitar silla ergonómica (formulario TI-ERG-03, único por año)
+
+9. CONTACTO
+Dudas sobre esta política: rrhh@empresa.com
+Problemas técnicos de conexión: soporte.ti@empresa.com o interno 3300

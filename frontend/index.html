@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buscador de Políticas Internas</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+          <span>Políticas Internas</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Estado del sistema</h3>
+        <div id="status-badge" class="badge badge-loading">Cargando...</div>
+        <p id="status-detail" class="status-detail"></p>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Documentos indexados</h3>
+        <ul id="doc-list" class="doc-list">
+          <li class="doc-item-loading">Cargando documentos...</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Preguntas de ejemplo</h3>
+        <ul class="example-list">
+          <li onclick="setQuestion('¿Cuántos días de vacaciones me corresponden si llevo 3 años en la empresa?')">
+            ¿Cuántos días de vacaciones con 3 años?
+          </li>
+          <li onclick="setQuestion('¿Cuántos días de home office puedo tomar por semana?')">
+            ¿Cuántos días de home office por semana?
+          </li>
+          <li onclick="setQuestion('¿Qué hago si pierdo o me roban el equipo de la empresa?')">
+            ¿Qué hago si me roban el equipo?
+          </li>
+          <li onclick="setQuestion('¿Puedo usar ChatGPT para mi trabajo?')">
+            ¿Puedo usar ChatGPT en el trabajo?
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <header class="main-header">
+        <h1>Buscador de Políticas Internas</h1>
+        <p>Hacé tu pregunta y obtené respuestas basadas en los documentos oficiales de la empresa.</p>
+      </header>
+
+      <div id="messages" class="messages">
+        <div class="welcome-msg">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <p>Escribí tu pregunta sobre las políticas internas y te respondo con información de los documentos oficiales.</p>
+        </div>
+      </div>
+
+      <form id="chat-form" class="chat-form">
+        <div class="input-wrapper">
+          <textarea
+            id="question-input"
+            placeholder="Ej: ¿Cuántos días de vacaciones me corresponden?"
+            rows="1"
+            maxlength="1000"
+          ></textarea>
+          <button type="submit" id="send-btn" aria-label="Enviar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

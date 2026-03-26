@@ -1,0 +1,77 @@
+POLÍTICA DE USO DE TECNOLOGÍA Y EQUIPOS
+Versión: 4.2 | Área: Tecnología de la Información | Vigencia: Enero 2024
+
+1. OBJETO
+Definir el uso aceptable de los recursos tecnológicos de la empresa para proteger los activos digitales y garantizar la productividad.
+
+2. ALCANCE
+Aplica a todos los colaboradores, consultores externos y terceros que usen equipos o sistemas de la empresa.
+
+3. USO ACEPTABLE DE EQUIPOS
+
+3.1 Computadoras y laptops:
+- Son de uso exclusivamente laboral
+- Se permite uso personal ocasional y moderado que no interfiera con el trabajo
+- Está prohibido instalar software no autorizado por TI
+- El empleado es responsable del cuidado físico del equipo asignado
+- Ante daño por mal uso, el costo de reparación puede imputarse al empleado
+
+3.2 Software permitido:
+- Suite Microsoft 365 (Word, Excel, PowerPoint, Teams, Outlook)
+- Navegadores: Chrome, Edge (actualizados)
+- Herramientas de videoconferencia: Teams, Zoom (versión corporativa)
+- Aplicaciones aprobadas en el catálogo TI
+
+3.3 Software prohibido:
+- Clientes torrent o P2P
+- Software de minería de criptomonedas
+- Juegos o aplicaciones de entretenimiento pesado
+- Cualquier software de acceso remoto no autorizado por TI
+
+4. USO DE INTERNET
+
+4.1 Uso permitido:
+- Búsquedas e investigación relacionada al trabajo
+- Acceso a plataformas de aprendizaje aprobadas
+- Uso de herramientas de IA aprobadas (ver sección 5)
+
+4.2 Uso prohibido:
+- Acceso a sitios de contenido adulto, violento o ilegal
+- Descarga de contenido con derechos de autor sin licencia
+- Uso excesivo de streaming de video/audio que sature el ancho de banda corporativo
+
+5. USO DE INTELIGENCIA ARTIFICIAL
+
+5.1 Herramientas de IA aprobadas:
+- Microsoft Copilot (integrado en M365)
+- ChatGPT Enterprise (con datos protegidos)
+- GitHub Copilot (solo para desarrolladores con licencia asignada)
+
+5.2 Restricciones de uso de IA:
+- PROHIBIDO ingresar datos personales de clientes o empleados en IA pública
+- PROHIBIDO subir documentos confidenciales a herramientas de IA sin aprobación de Legal
+- Las respuestas de IA deben revisarse antes de enviarse como propias
+- Toda información sensible debe ser anonimizada antes de usar con IA
+
+6. CONTRASEÑAS Y ACCESOS
+- Contraseñas mínimo 12 caracteres, combinando mayúsculas, números y símbolos
+- Cambio obligatorio cada 90 días
+- Prohibido compartir contraseñas con compañeros, incluso superiores
+- El doble factor de autenticación (2FA) es obligatorio para correo y VPN
+
+7. INCIDENTES DE SEGURIDAD
+Ante cualquier sospecha de virus, phishing o brecha de seguridad:
+1. No apagar ni reiniciar el equipo
+2. Desconectar del WiFi o cable de red
+3. Notificar inmediatamente a: seguridad@empresa.com o interno 3911
+4. No intentar solucionar el problema por cuenta propia
+
+8. SANCIONES
+El incumplimiento puede derivar en:
+- Advertencia formal documentada
+- Suspensión temporal de accesos
+- Acciones disciplinarias hasta desvinculación
+- Acciones legales en caso de daños o actos dolosos
+
+9. CONTACTO
+Mesa de ayuda TI: soporte.ti@empresa.com | Interno 3300 | Lunes a viernes 8:00-18:00

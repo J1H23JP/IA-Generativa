@@ -3,6 +3,7 @@ Extrae texto plano desde archivos PDF, DOCX y TXT.
 Para PDFs escaneados (sin capa de texto) aplica OCR automáticamente.
 Retorna lista de dicts con {text, page, source}.
 """
+import os
 from pathlib import Path
 
 
@@ -16,34 +17,59 @@ def _ocr_page(page) -> str:
     """
     Aplica OCR a una página de PDF usando pytesseract.
     Requiere: pip install pytesseract pillow
-    Y Tesseract instalado en el sistema con paquete de idioma español.
+    Y Tesseract instalado: https://github.com/UB-Mannheim/tesseract/wiki
+    Configurar en .env: TESSERACT_CMD=C:\\Program Files\\Tesseract-OCR\\tesseract.exe
     """
     try:
         import pytesseract
         from PIL import Image
         import io
+
+        # Leer ruta de Tesseract desde .env
+        tesseract_cmd = os.getenv("TESSERACT_CMD")
+        if tesseract_cmd:
+            pytesseract.pytesseract.tesseract_cmd = tesseract_cmd
+
         pix = page.get_pixmap(dpi=200)
         img = Image.open(io.BytesIO(pix.tobytes("png")))
-        return pytesseract.image_to_string(img, lang="spa+eng")
+
+        # Intentar con español + inglés, fallback a inglés solo
+        try:
+            text = pytesseract.image_to_string(img, lang="spa+eng")
+        except pytesseract.TesseractError:
+            text = pytesseract.image_to_string(img, lang="eng")
+
+        return text
+
     except ImportError:
-        print("    [AVISO] pytesseract/pillow no instalado. Página omitida.")
+        print("    [OCR] pytesseract o pillow no instalado.")
+        print("    [OCR] Ejecutá: pip install pytesseract pillow")
         return ""
     except Exception as e:
-        print(f"    [AVISO] OCR falló: {e}")
+        print(f"    [OCR] Error: {e}")
+        if "tesseract" in str(e).lower() or "not found" in str(e).lower():
+            print("    [OCR] Tesseract no está instalado o no se encontró.")
+            print("    [OCR] Descargalo de: github.com/UB-Mannheim/tesseract/wiki")
+            print("    [OCR] Luego agregá en .env: TESSERACT_CMD=C:\\Program Files\\Tesseract-OCR\\tesseract.exe")
         return ""
 
 
 def extract_pdf(file_path: str) -> list[dict]:
     import fitz  # PyMuPDF
     pages = []
+    source = Path(file_path).name
     doc = fitz.open(file_path)
+
     for i, page in enumerate(doc, start=1):
         text = page.get_text()
         if not text.strip():
             print(f"    Página {i} sin texto — aplicando OCR...")
             text = _ocr_page(page)
+            if not text.strip():
+                print(f"    Página {i} omitida (OCR no disponible o página vacía)")
         if text.strip():
-            pages.append({"text": text, "page": i, "source": Path(file_path).name})
+            pages.append({"text": text, "page": i, "source": source})
+
     return pages
 
 
@@ -69,7 +95,6 @@ def extract(file_path: str) -> list[dict]:
 
 
 def extract_all(docs_dir: str) -> list[dict]:
-    """Extrae texto de todos los documentos en un directorio."""
     all_pages = []
     docs_path = Path(docs_dir)
     for file in docs_path.iterdir():

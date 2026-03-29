@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from fastapi import APIRouter, HTTPException, UploadFile, File
 from api.models import DocumentsResponse, DocumentInfo, StatusResponse
-from rag.vectorstore import get_vectorstore, count_chunks
+from rag.vectorstore import get_vectorstore, count_chunks, delete_chunks_by_source
 
 router = APIRouter()
 
@@ -79,4 +79,42 @@ async def upload_document(file: UploadFile = File(...)):
         "filename": file.filename,
         "chunks_added": chunks_added,
         "message": f"'{file.filename}' indexado correctamente con {chunks_added} fragmentos."
+    }
+
+
+@router.delete("/documents/{filename}")
+async def delete_document(filename: str):
+    """
+    Elimina un documento indexado: borra el archivo de docs/ (si existe) y sus chunks del vectorstore.
+    """
+    docs_dir = os.getenv("DOCS_PATH", "./docs")
+    file_path = os.path.join(docs_dir, filename)
+
+    # Eliminar chunks del vectorstore siempre
+    try:
+        collection = get_vectorstore()
+        chunks_deleted = delete_chunks_by_source(collection, filename)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al eliminar chunks: {str(e)}")
+
+    # Eliminar archivo físico si existe
+    file_deleted = False
+    if os.path.exists(file_path):
+        try:
+            os.remove(file_path)
+            file_deleted = True
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Error al eliminar archivo: {str(e)}")
+
+    message = f"'{filename}' eliminado del índice. {chunks_deleted} fragmentos removidos."
+    if file_deleted:
+        message += " Archivo físico eliminado."
+    else:
+        message += " (Archivo físico no encontrado, pero chunks eliminados.)"
+
+    return {
+        "filename": filename,
+        "chunks_deleted": chunks_deleted,
+        "file_deleted": file_deleted,
+        "message": message
     }

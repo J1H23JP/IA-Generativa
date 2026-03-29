@@ -37,3 +37,19 @@ def add_chunks(collection, chunks: list[dict], embedder: SentenceTransformer, ba
 
 def count_chunks(collection) -> int:
     return collection.count()
+
+
+def delete_chunks_by_source(collection, source: str) -> int:
+    """Delete all chunks from the collection that have the given source in metadata."""
+    try:
+        # Get all ids where metadata source matches
+        results = collection.get(include=["metadatas"])
+        ids_to_delete = [
+            results["ids"][i] for i, meta in enumerate(results["metadatas"])
+            if meta.get("source") == source
+        ]
+        if ids_to_delete:
+            collection.delete(ids=ids_to_delete)
+        return len(ids_to_delete)
+    except Exception as e:
+        raise Exception(f"Error deleting chunks for source {source}: {str(e)}")

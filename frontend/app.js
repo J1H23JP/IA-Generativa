@@ -1,4 +1,5 @@
 const API = "";
+console.log("app.js cargado (v2)");
 
 // ── Auto-resize textarea ──
 const textarea = document.getElementById("question-input");
@@ -40,16 +41,47 @@ async function loadDocuments() {
   try {
     const res = await fetch(`${API}/api/documents`);
     const data = await res.json();
+    console.log("loadDocuments response", data);
     const list = document.getElementById("doc-list");
     if (!data.documents.length) {
       list.innerHTML = '<li class="doc-item-loading">Sin documentos indexados</li>';
       return;
     }
     list.innerHTML = data.documents
-      .map((d) => `<li class="doc-item"><span class="doc-name">${d.name}</span><span>${d.chunks} chunks</span></li>`)
+      .map((d) => `<li class="doc-item" data-filename="${encodeURIComponent(d.name)}">
+        <span class="doc-name">${d.name}</span>
+        <span>${d.chunks} chunks</span>
+        <button class="delete-btn" type="button" aria-label="Eliminar documento">✕</button>
+      </li>`)
       .join("");
+
+    list.querySelectorAll(".doc-item").forEach((item) => {
+      const btn = item.querySelector(".delete-btn");
+      const filename = decodeURIComponent(item.getAttribute("data-filename"));
+      btn.addEventListener("click", () => deleteDocument(filename));
+    });
   } catch {
     document.getElementById("doc-list").innerHTML = '<li class="doc-item-loading">Error al cargar</li>';
+  }
+}
+
+async function deleteDocument(encodedFilename) {
+  const filename = decodeURIComponent(encodedFilename);
+  if (!confirm(`¿Estás seguro de que quieres eliminar '${filename}'?`)) return;
+
+  try {
+    const res = await fetch(`${API}/api/documents/${encodeURIComponent(filename)}`, { method: "DELETE" });
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(`Error: ${data.detail}`);
+    } else {
+      alert(data.message);
+      await loadDocuments();
+      await loadStatus();
+    }
+  } catch {
+    alert("Error de conexión al eliminar el documento.");
   }
 }
 

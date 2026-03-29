@@ -94,6 +94,49 @@ body {
   font-size: 12px;
 }
 .doc-item span { color: var(--text-muted); font-size: 11px; }
+.doc-item .delete-btn {
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-color: transparent !important;
+  background: transparent !important;
+  color: var(--red) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 4px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1;
+  cursor: pointer;
+  margin-left: 8px;
+  min-width: 24px;
+  min-height: 24px;
+  transition: color 0.15s, transform 0.15s;
+}
+.doc-item .delete-btn:focus {
+  outline: none;
+}
+
+.doc-item .delete-btn {
+  color: var(--red) !important;
+  font-size: 18px !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.doc-item .delete-btn:hover {
+  color: #ff4c4c;
+  transform: scale(1.1);
+}
+
+.doc-item .delete-btn:hover {
+  color: #ff2c2c;
+  transform: scale(1.1);
+}
 .doc-item-loading { font-size: 12px; color: var(--text-muted); }
 
 .example-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
